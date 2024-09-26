@@ -2,26 +2,26 @@ import tkinter as  tk
 
 window = tk.Tk() # 构造一个窗口对象 
 window.title("my window")
-window.geometry("200x100")
-
-var = tk.StringVar() # 定义一个字符串变量
-
-# l = tk.Label(window,text="va",bg='green',font=('Arial',12),width=15,height=2)
-l = tk.Label(window,textvariable=var,bg='green',font=('Arial',12),width=15,height=2) # 构造一个window上的Label对象
-l.pack()
+window.geometry("200x200")
 
 
-on_hit = False
-def hit_me():
-    global on_hit
-    if on_hit == False:
-        on_hit = True
-        var.set("you hit me")
-    else:
-        on_hit = False
-        var.set("")
+e = tk.Entry(window,show="*")
+e.pack()
 
-b = tk.Button(window,text="hit me",width=15,height=2,command=hit_me)
-b.pack()
+def insert_point():
+    var = e.get()
+    t.insert("insert",var)
+
+def insert_end():
+    var = e.get()
+    t.insert("2.2",var) #第2行第2位
+
+b1 = tk.Button(window,text="insert point",width=15,height=2,command=insert_point)
+b1.pack()
+b2 = tk.Button(window,text="insert end",command=insert_end)
+b2.pack()
+
+t = tk.Text(window,height=2)
+t.pack()
 
 window.mainloop() # 窗口不断刷新
