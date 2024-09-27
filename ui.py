@@ -4,18 +4,14 @@ window = tk.Tk() # 构造一个窗口对象
 window.title("my window")
 window.geometry("200x200")
 
-var = tk.StringVar()
+
 l = tk.Label(window,bg='yellow',width=20,text='empty')
 l.pack()
 
-def print_selection():
-    l.config(text='you have selectd ' + var.get()) # 修改label的参数
+def print_selection(v): # 拖动scale有个默认的传入值
+    l.config(text='you have selectd ' + v) # 修改label的参数
 
-r1 = tk.Radiobutton(window,text='Option A',variable=var,value='A',command=print_selection) # 选中时把 ’Option A‘改为’A‘ 
-r1.pack()
-r2 = tk.Radiobutton(window,text='Option B',variable=var,value='B',command=print_selection) # 选中时把 ’Option A‘改为’A‘ 
-r2.pack()
-r3 = tk.Radiobutton(window,text='Option C',variable=var,value='C',command=print_selection) # 选中时把 ’Option A‘改为’A‘ 
-r3.pack()
+s = tk.Scale(window,label="try me",from_=5,to=11,orient=tk.HORIZONTAL,length=200,showvalue=0,tickinterval=0,resolution=0.01,command=print_selection)
+s.pack()
 
 window.mainloop() # 窗口不断刷新
